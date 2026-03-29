@@ -1,4 +1,5 @@
 # 📈 FinSignal — Stock Forecasting Dashboard
+>  **Done by - Sahil Shaji s4 cse**
 
 > **Assignment 2** · Interactive Streamlit dashboard for  
 > Pattern Recognition in Financial Time Series using **STFT + CNN**
@@ -6,7 +7,6 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io)
 
-> # **Done by - Sahil Shaji s4 cse**
 
 ## 🌐 Live Demo
 
