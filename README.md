@@ -10,7 +10,7 @@
 ## 🌐 Live Demo
 
 > After deploying, your link will be:  
-> `https://<your-app-name>.streamlit.app`
+> https://price-prediction-using-pattern-recognition.streamlit.app
 
 ---
 
@@ -26,39 +26,54 @@
 
 ---
 
-## 🚀 Deploy to Streamlit Cloud (Free)
+## 📐 Methodology
 
-### Step 1 — Push to GitHub
+### Signal Representation
+Financial time series treated as multivariate signal:
+```
+X(t) = [p(t), r(t), g(t), s(t), d(t)]
+```
+where p = close price, r = revenue indicator, g = growth (return), s = index, d = daily change.
 
-```bash
-git init
-git add .
-git commit -m "FinSignal: STFT + CNN Stock Dashboard"
-git remote add origin https://github.com/<your-username>/finsignal.git
-git branch -M main
-git push -u origin main
+### STFT (Short-Time Fourier Transform)
+```
+STFT(t, f) = ∫ X(τ) · w(τ − t) · e^(−j2πfτ) dτ
 ```
 
-### Step 2 — Deploy on Streamlit Cloud
-
-1. Go to **[share.streamlit.io](https://share.streamlit.io)**
-2. Click **"New app"**
-3. Select your GitHub repo
-4. Set **Main file path** → `app.py`
-5. Click **Deploy** ✅
-
-That's it — your dashboard will be live in ~2 minutes!
-
----
-
-## 💻 Run Locally
-
-```bash
-pip install -r requirements.txt
-streamlit run app.py
+Spectrogram:
+```
+S(t, f) = |STFT(t, f)|²
 ```
 
----
+**Key parameters:**
+| Parameter | Value |
+|-----------|-------|
+| Window Length (L) | 64 trading days |
+| Hop Size (H) | 8 trading days |
+| Overlap | 56 days |
+| Sampling freq | 1 sample/day |
+
+### CNN Architecture
+
+```
+Input: (B, 1, freq_bins, time_frames)
+    ↓
+Conv Block 1: Conv2d(1→32) → BN → ReLU → MaxPool → Dropout
+    ↓
+Conv Block 2: Conv2d(32→64) → BN → ReLU → MaxPool → Dropout
+    ↓
+Conv Block 3: Conv2d(64→128) → BN → ReLU → MaxPool → Dropout
+    ↓
+AdaptiveAvgPool2d(4×4)
+    ↓
+FC: Linear(2048→256) → ReLU → Dropout
+    ↓
+FC: Linear(256→64) → ReLU → Dropout
+    ↓
+Linear(64→1) → Sigmoid
+    ↓
+Output: ŷ ∈ (0,1)  [denormalized → price in ₹]
+```
 
 ## 🔧 How It Works
 
