@@ -1,5 +1,5 @@
 # 📈 FinSignal — Stock Forecasting Dashboard
->  **Done by - Sahil Shaji s4 cse TCR24CS059**
+>  **Done by - Sahil Shaji TCR24CS059**
 
 > **Assignment 2** · Interactive Streamlit dashboard for  
 > Pattern Recognition in Financial Time Series using **STFT + CNN**
