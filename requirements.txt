@@ -6,4 +6,4 @@ plotly
 scipy
 scikit-learn
 torch
-yfinance
+yfinance>=1.0.0
