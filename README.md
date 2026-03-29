@@ -6,9 +6,7 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io)
 
----
-> # Done by - Sahil Shaji s4 cse
----
+> # **Done by - Sahil Shaji s4 cse**
 
 ## 🌐 Live Demo
 
